@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "NodeNext",
+    "noImplicitAny": true,
+    "module": "NodeNext",
+    "target": "ES6",
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+    },
+    "lib": [
+      "es6",
+      "dom"
+    ]
+  },
+  "files": ["src/index.ts"],
+  "exclude": ["node_modules"]
+}
