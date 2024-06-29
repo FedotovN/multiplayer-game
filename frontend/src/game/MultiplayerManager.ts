@@ -6,6 +6,11 @@ import MeshRenderer from "kneekeetah-game-engine/models/components/MeshRenderer"
 import SquareMesh from "kneekeetah-game-engine/models/Mesh/SquareMesh";
 import Rigidbody from "kneekeetah-game-engine/models/components/Rigidbody";
 import EngineManager from "kneekeetah-game-engine/EngineManager";
+declare var process: {
+    env: {
+        BACKEND_HOST: string;
+    },
+}
 
 export default class MultiplayerManager {
     targetsList: Array<Vector> = [];
@@ -18,7 +23,7 @@ export default class MultiplayerManager {
 
     async connectToTheGame(): Promise<void> {
         await new Promise<void>((res) => {
-            this.websocket = io();
+            this.websocket = io(process.env.BACKEND_HOST);
             this._setEventListeners();
             this.websocket.on('connect', res);
             console.log('Connected to WebSocket!');

@@ -1,15 +1,15 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
 const path = require('path');
+const dotenv = require('dotenv');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const { DefinePlugin } = require('webpack')
 const isProduction = process.env.NODE_ENV == 'production';
 
 
 const stylesHandler = MiniCssExtractPlugin.loader;
-
-
+const { parsed, error } = dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 const config = {
     entry: './src/index.ts',
@@ -29,7 +29,9 @@ const config = {
         new MiniCssExtractPlugin({
             filename: '[name].css',
         }),
-
+        new DefinePlugin({
+            'process.env': JSON.stringify(parsed),
+        }),
         // Add your plugins here
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
     ],

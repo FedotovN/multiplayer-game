@@ -1,4 +1,5 @@
 type EnvironmentVariables = {
-    PORT: number
+    PORT: number,
+    CORS_ALLOW: string,
 }
 export default EnvironmentVariables;

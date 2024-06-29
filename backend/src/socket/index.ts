@@ -9,7 +9,7 @@ import Player from "../models/entities/Player";
 import Rigidbody from "kneekeetah-game-engine/models/components/Rigidbody";
 import PhysicsService from "kneekeetah-game-engine/services/PhysicsService";
 
-const { PORT } = environment();
+const { PORT, CORS_ALLOW } = environment();
 
 export default class SocketManager {
     websocket: Server;
@@ -28,7 +28,7 @@ export default class SocketManager {
             pingTimeout: 5000,
             pingInterval: 2000,
             cors: {
-                origin: "http://localhost:8080"
+                origin: CORS_ALLOW,
             }
         });
         server.listen(PORT, () => {
