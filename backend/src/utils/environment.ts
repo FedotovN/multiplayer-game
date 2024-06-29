@@ -7,6 +7,9 @@ const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default function environment(): EnvironmentVariables {
-    const { parsed } = dotenv.config({ path: path.join(__dirname, '..', '..', '.env') });
+    const { parsed, error } = dotenv.config({ path: path.join(__dirname, '..', '..', '.env') });
+    if (error) {
+        throw error;
+    }
     return parsed as unknown as EnvironmentVariables;
 }
