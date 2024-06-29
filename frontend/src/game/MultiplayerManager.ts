@@ -47,10 +47,8 @@ export default class MultiplayerManager {
         }, 5000);
     }
     private _setupControls() {
-        window.addEventListener('touchstart', (e) => {
-            const [touch] = Array.from(e.changedTouches);
-            const { clientY, clientX } = touch;
-            this._makeMove(new Vector(clientX, clientY));
+        window.addEventListener('pointerdown', (e) => {
+            this._makeMove(new Vector(e.x, e.y));
         });
         window.addEventListener('click', (e) => {
             this._makeMove(new Vector(e.x, e.y));
