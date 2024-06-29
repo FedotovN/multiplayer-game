@@ -27,7 +27,7 @@
     "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
-    "sat": "^0.9.0",
+    "kneekeetah-game-engine": "^1.0.0",
     "socket.io-client": "^4.7.5",
     "webpack": "^5.92.1"
   }

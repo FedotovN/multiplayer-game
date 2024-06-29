@@ -1,11 +1,11 @@
 import { io, Socket } from "socket.io-client";
 import Player from "./models/entities/Player";
 import PlayerDTO, { BackendPlayersResponse } from "@/game/models/DTOs/PlayerDTO";
-import Vector from "engine/models/Vector";
-import MeshRenderer from "engine/models/components/MeshRenderer";
-import SquareMesh from "engine/models/Mesh/SquareMesh";
-import Rigidbody from "engine/models/components/Rigidbody";
-import EngineManager from "engine/EngineManager";
+import Vector from "kneekeetah-game-engine/models/Vector";
+import MeshRenderer from "kneekeetah-game-engine/models/components/MeshRenderer";
+import SquareMesh from "kneekeetah-game-engine/models/Mesh/SquareMesh";
+import Rigidbody from "kneekeetah-game-engine/models/components/Rigidbody";
+import EngineManager from "kneekeetah-game-engine/EngineManager";
 
 export default class MultiplayerManager {
     targetsList: Array<Vector> = [];

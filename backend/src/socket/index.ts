@@ -4,10 +4,10 @@ import http from 'http';
 import environment from "../utils/environment";
 import randomRgb from "../utils/randomRgb";
 import PlayerDTO, { BackendPlayersResponse } from "../DTOs/PlayerDTO";
-import Vector from "engine/models/Vector";
+import Vector from "kneekeetah-game-engine/models/Vector";
 import Player from "../models/entities/Player";
-import Rigidbody from "engine/models/components/Rigidbody";
-import PhysicsService from "engine/services/PhysicsService";
+import Rigidbody from "kneekeetah-game-engine/models/components/Rigidbody";
+import PhysicsService from "kneekeetah-game-engine/services/PhysicsService";
 
 const { PORT } = environment();
 

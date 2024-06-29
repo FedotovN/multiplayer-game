@@ -1,4 +1,4 @@
-import Vector from "engine/models/Vector";
+import Vector from "kneekeetah-game-engine/models/Vector";
 export default interface PlayerDTO {
     color: [number, number, number],
     translate: {

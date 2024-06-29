@@ -1,10 +1,10 @@
 import Agent, { AgentProperties } from "../Agent";
-import { GameObjectOptions } from "engine/models/GameObject";
-import PolygonMesh from "engine/models/Mesh/PolygonMesh";
-import Rigidbody from "engine/models/components/Rigidbody";
-import Collider from "engine/models/components/Collider";
-import MeshRenderer from "engine/models/components/MeshRenderer";
-import SquareShape from "engine/models/Shape/SquareShape";
+import { GameObjectOptions } from "kneekeetah-game-engine/models/GameObject";
+import PolygonMesh from "kneekeetah-game-engine/models/Mesh/PolygonMesh";
+import Rigidbody from "kneekeetah-game-engine/models/components/Rigidbody";
+import Collider from "kneekeetah-game-engine/models/components/Collider";
+import MeshRenderer from "kneekeetah-game-engine/models/components/MeshRenderer";
+import SquareShape from "kneekeetah-game-engine/models/Shape/SquareShape";
 
 interface PlayerProperties {
     color: [number, number, number],

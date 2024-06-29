@@ -1,4 +1,4 @@
-import GameObject, { GameObjectOptions } from "engine/models/GameObject";
+import GameObject, { GameObjectOptions } from "kneekeetah-game-engine/models/GameObject";
 export type AgentProperties = {
     health?: number,
     maxHealth: number,
