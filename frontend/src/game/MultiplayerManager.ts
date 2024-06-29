@@ -23,6 +23,7 @@ export default class MultiplayerManager {
 
     async connectToTheGame(): Promise<void> {
         await new Promise<void>((res) => {
+            console.log('Specified backend host url:', process.env.BACKEND_HOST);
             this.websocket = io(process.env.BACKEND_HOST);
             this._setEventListeners();
             this.websocket.on('connect', res);
