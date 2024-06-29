@@ -40,7 +40,7 @@ const config = {
             {
                 test: /\.(ts|tsx)$/i,
                 loader: 'ts-loader',
-                exclude: ['/node_modules/'],
+                options: { allowTsInNodeModules: true },
             },
             {
                 test: /\.css$/i,
