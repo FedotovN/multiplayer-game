@@ -31,22 +31,29 @@ export default class MultiplayerManager {
         });
         this._setupControls();
     }
-    private _setupControls() {
+    _makeMove(to: Vector) {
         const player = this._getPlayer();
+        this.targetsList.push(to)
+        this.websocket.emit('new_movement_target', to);
+        const pointer = new MeshRenderer();
+        const playerMr = player.getComponent('meshRenderer') as MeshRenderer;
+        pointer.mesh = new SquareMesh({ size: 10, fillStyle: playerMr.mesh.fillStyle, strokeStyle: 'white', lineWidth: 2 });
+        pointer.mesh.translate.position.x = to.x;
+        pointer.mesh.translate.position.y = to.y;
+        pointer.mesh.translate.rotation = 45;
+        setTimeout(() => {
+            pointer.removeMesh();
+            pointer.cleanup();
+        }, 5000);
+    }
+    private _setupControls() {
+        window.addEventListener('touchstart', (e) => {
+            const [touch] = Array.from(e.changedTouches);
+            const { clientY, clientX } = touch;
+            this._makeMove(new Vector(clientX, clientY));
+        });
         window.addEventListener('click', (e) => {
-            const newMovementTarget = new Vector(e.x, e.y);
-            this.targetsList.push(newMovementTarget)
-            this.websocket.emit('new_movement_target', newMovementTarget);
-            const pointer = new MeshRenderer();
-            const playerMr = player.getComponent('meshRenderer') as MeshRenderer;
-            pointer.mesh = new SquareMesh({ size: 10, fillStyle: playerMr.mesh.fillStyle, strokeStyle: 'white', lineWidth: 2 });
-            pointer.mesh.translate.position.x = e.x;
-            pointer.mesh.translate.position.y = e.y;
-            pointer.mesh.translate.rotation = 45;
-            setTimeout(() => {
-                pointer.removeMesh();
-                pointer.cleanup();
-            }, 5000);
+            this._makeMove(new Vector(e.x, e.y));
         });
         this.engineManager.onUpdate((deltaTime) => {
             this._makePlayerStep(deltaTime);
