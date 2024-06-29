@@ -12,14 +12,13 @@ export default class MultiplayerManager {
     players: Map<string, Player> = new Map<string, Player>();
     websocket: Socket;
     engineManager: EngineManager;
-    private _socketUrl = 'ws://localhost:5000'
     constructor(engineManager: EngineManager) {
         this.engineManager = engineManager;
     }
 
     async connectToTheGame(): Promise<void> {
         await new Promise<void>((res) => {
-            this.websocket = io(this._socketUrl);
+            this.websocket = io();
             this._setEventListeners();
             this.websocket.on('connect', res);
             console.log('Connected to WebSocket!');
